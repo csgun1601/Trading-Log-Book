@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jul 15 22:29:55 2020
-
 @author: Chaitanya Guntoorkar
 
 Project: Share Market Logbook
@@ -49,7 +47,7 @@ while FLAG == True:
     print('Want to update an existing Transaction? (Enter U)')
     print('Are you here just for statistics? (Enter S)')
     print('Do you want to see all transactions? (Enter A)')
-    df = pd.read_csv(r'C:\Users\ASUS\Desktop\Share_data.csv')
+    df = pd.read_csv(r'#csv_file')
     n = df.shape[0]
     print('The latest serial number is: ', n)
     
@@ -60,7 +58,7 @@ while FLAG == True:
         if Task == 'N':
             Flag = True
             while Flag == True:
-                SrNo = input('Enter the serial number: ')                                                                                   # yet to figure out
+                SrNo = input('Enter the serial number: ')                                                                                   
                 Date_of_buy = input('Enter the date in the format dd/mm/yyyy: ')
                 Name_of_the_share = input('Enter the name of the share: ')
                 Quantity_bought = int(input('Enter the quantity of shares bought: '))
@@ -100,7 +98,7 @@ while FLAG == True:
                     Net_profit = None
                 lst = [SrNo,Date_of_buy,Name_of_the_share,Quantity_bought,Rate_per_share,Total_amount_bought,commission_plus,Net_purchase_amount,Date_of_sell,Quantity_sold,Rate_of_sell,Amount_sold,commission_minus,Net_amount_sold,Net_profit
 ]
-                append_list_as_row('Share_data.csv', lst)
+                append_list_as_row('#csv_file', lst)
                 print('Successfully added!!')
                 fl = True
                 while fl == True:
@@ -117,7 +115,7 @@ while FLAG == True:
             p =False
             
         elif Task == 'S':
-            df = pd.read_csv(r'C:\Users\ASUS\Desktop\Share_data.csv')
+            df = pd.read_csv(r'#csv_file')
             print('Total amount bought = {}'.format(df['Total_amount_bought'].sum()))
             print('Total commission(positive) till now = {}'.format(df['commission_plus'].sum()))
             print('Total Amount purchased till now = {}'.format(df['Net_purchase_amount'].sum()))
@@ -133,7 +131,7 @@ while FLAG == True:
             while flag == True:
                 num = int(input("Enter the serial number of the entry you want to work on: "))
     
-                df = pd.read_csv(r'C:\Users\ASUS\Desktop\Share_data.csv')
+                df = pd.read_csv(r'#csv_file')
                 #print(df)
                 Net_purchase_amount = df.loc[df.SrNo == num, 'Net_purchase_amount'].values[0]
                 
@@ -159,7 +157,7 @@ while FLAG == True:
                 change_net_amount_sold(df, Net_amount_sold, num)
                 change_net_profit(df, Net_profit, num)
     
-                df.to_csv(r'C:\Users\ASUS\Desktop\Share_data.csv', index=False)
+                df.to_csv(r'#csv_file', index=False)
         
                 print('Successfully updated!!!')
                 f = True
